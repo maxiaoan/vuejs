@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<style type="text/css">
+	.demo{font-family: "blackadder itc";}
+</style>
+</head>
+<body>
+	<div id='app'>
+		<!-- 字符串拼接，和mustache语法 -->
+		<h2>  {{firstName}} {{lastName}}</h2>
+		<h2>{{ firstName+ ' ' + lastName }}</h2>
+		<hr >
+		<!-- 多次调用 -->
+		<h2>函数调用{{getFullName()}}</h2>
+		<h2>函数调用{{getFullName()}}</h2>
+		<h2>函数调用{{getFullName()}}</h2>
+		<h2>函数调用{{getFullName()}}</h2>
+		<hr >
+		<!-- 计算属性，只会调用一次，会有缓存 -->
+		<h2>计算属性形式1：{{fullName}}</h2>
+		
+		<h2>计算属性形式2：{{fullName2}}</h2>
+		<h2>计算属性形式3：{{fullName3}}</h2>
+		<h2>书的总价格:{{totalPrice}}</h2>
+	</div>
+	
+</body>
+<script>
+
+let app = new Vue({
+	el: "#app",
+	data:{
+		firstName:"Lebron",
+		lastName:"James",
+		demo:'demo',
+		// 数组中包含对象的属性,可以利用计算属性来计算
+		books:[
+			{id:110,name:"Unix编程艺术",price:119},
+			{id:111,name:"深入理解计算机原理",price:105},
+			{id:112,name:"代码大全",price:98},
+			{id:113,name:"现代操作系统",price:87}
+		]
+	},
+	methods:{
+		getFullName:function(){
+			console.log('getFullName');
+			return  this.firstName + " " +this.lastName
+		}
+	},
+	// 计算属性有缓存功能,性能更好,一般只有get属性,只读属性
+	computed:{
+		fullName:function(){
+			console.log('fullName');
+			return this.firstName + " " +this.lastName
+		},
+		//getter and setter
+		//这儿的fullName是个属性
+		fullName2:{
+			get(){
+				return this.firstName  +" " + this.lastName
+			},
+			set(nameValue){
+				const names = nameValue.split(" ");
+				this.firstName = names[0];
+				this.lastName = names[1];
+			}
+		},
+		fullName3:function(){
+			return this.firstName  +" " + this.lastName;
+		},
+	// filter/map/reduce常用的函数
+		totalPrice:function(){
+			total = 0;
+			// for (let i = 0 ;i < this.books.length;i++)
+			// 遍历数组
+			// {
+			// 	total += this.books[i].price;
+			// }
+			// 遍历数组	
+			// for(let i in  this.books){
+			// 	total += this.books[i].price;
+			// }
+			// 遍历数组
+			for( book of this.books){
+				total += book.price
+			}
+
+			return total;
+		}
+	}
+})
+</script>
+
+</html>

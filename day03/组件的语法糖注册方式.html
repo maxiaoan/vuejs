@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id='app'>
+		<cpn1></cpn1>
+		<cpn2></cpn2>
+	</div>
+</body>
+<script>
+	// 语法糖的写法(全局组件)
+	Vue.component('cpn1',{
+		 template:`	<div>
+			<h2>悯农</h2>
+			<p>锄禾日当午</p>
+			<p>汗滴禾下土</p>
+		</div>`
+	})
+let app = new Vue({
+	el: "#app",
+	data:{
+
+	},
+	// 注册局部组件的语法糖
+	components:{
+		cpn2:{
+			template:`
+			<div>
+				<h2>悯农</h2>
+				<p>谁知盘中餐</p>
+				<p>粒粒皆辛苦</p>
+			</div>
+			`
+		}
+	}
+})
+</script>
+</html>
+

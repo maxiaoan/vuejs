@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<!-- 父组件模板 -->
+	<div id="app" >
+		<h2>{{message}}</h2>
+		<!-- 父组件通过 v-on 来监听子组件事件 -->
+		<cpn @itemclick='cpnclick'></cpn>
+	</div>
+</body>
+	<!-- 子组件模板 -->
+<template id="cpn">
+	<div>
+	<button v-for="item in categories" @click="btnclick(item)">{{item.name}}</button>
+	
+	</div>
+</template>
+<script>
+	// 子组件
+  const cpn = {
+		template:'#cpn',
+		data(){
+			return{
+				categories:[
+					{id:'001',name:'热门推荐'},
+					{id:'002',name:'手机数码'},
+					{id:'003',name:'家用家电'},
+					{id:'004',name:'电脑办公'}
+				]
+			}
+		},
+		methods:
+		{
+			btnclick(item){
+				// 触发、发射事件：即为自定义事件，向父组件传递信息
+				this.$emit('itemclick',item)
+				// console.log(item)
+			}
+		}
+	}
+	// 父组件
+ let app = new Vue({
+ 	el: "#app",
+ 	data:{
+		message:"子传父",
+		movies:['海王','海贼王','加勒比海盗','海尔兄弟']
+ 	},
+	methods:{
+		cpnclick(item){
+			console.log(item)
+		}
+	},
+	components:{
+		cpn
+		}
+ })
+</script>
+</html>
+

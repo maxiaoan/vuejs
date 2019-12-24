@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id='app'>
+		<label for="license">
+			<input type="checkbox"  id="license" v-model="isAgree"/>同意协议
+		</label>
+		<h2 style="color: red;" v-if="isAgree">你选择的是:同意协议</h2>
+		<h2 style="color: red;" v-else>你选择的是:不同意协议</h2>
+		<button v-bind:disabled="!isAgree">下一步</button>
+		<hr >
+<!-- 多选框 -->
+		<label for="football">
+			<input type="checkbox" id="football" value="足球"  v-model="hobbies"/>足球
+		</label>
+		<label for="basketball">
+			<input type="checkbox" id="basketball" value="篮球" v-model="hobbies"/>篮球
+		</label>
+		<label for="pinpang">
+			<input type="checkbox" id="pinpang" value="乒乓球" v-model="hobbies"/>乒乓球
+		</label>
+		<label for="badminton">
+			<input type="checkbox" id="badminton" value="羽毛球" v-model="hobbies"/>羽毛球
+		</label>
+		<ul>
+			<h2>您的爱好有：</h2>
+		<span><li v-for="item in hobbies">{{item}}</li></span>	
+		</ul>
+	</div>
+</body>
+
+<script>
+ 
+let app = new Vue({
+	el: "#app",
+	data:{
+	isAgree:false, //单选框是布尔值
+	hobbies:[] //多选框为数组
+	}
+})
+</script>
+</html>
+

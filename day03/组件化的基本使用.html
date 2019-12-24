@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id='app1'>
+		<h1>App1</h1>
+	<cpn></cpn>
+	<cpn></cpn>
+		<!-- <cpn2></cpn2> -->
+	</div>
+	<hr >
+	<div id="app2">
+		<h1>App2</h1>
+		<!-- 局部组件的使用 -->
+		<cpn2></cpn2>
+	</div>
+</body>
+<script>
+ //1、创建组件构造器对象
+ const cpnC = Vue.extend({
+	 template:`	<div>
+		<h2>标题2</h2>
+		<p>锄禾日当午</p>
+		<p>汗滴禾下土</p>
+	</div>`
+ })
+ //2、注册全局组件
+ Vue.component('cpn',cpnC)
+// 3、使用组件 见10 11行
+	// ES6 可以使用``定义字符串
+const app1 = new Vue({
+ 	el: "#app1",
+ });
+const app2 = new Vue({
+	el:'#app2',
+	components:{
+		// cpn2:使用组件时的标签名，cpn2为局部组件，挂载在实例下面
+		cpn2:cpnC
+	}
+})
+
+</script>
+</html>
+

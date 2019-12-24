@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id='app'>
+		<cpn><span>插槽1</span></cpn>
+		<hr >
+	<!-- 
+	1、插槽的基本使用
+	2、插槽的默认值
+	3、多个默认值，则同时起作用-->	
+		<cpn><i>插槽2</i></cpn> 
+		<hr >
+		<cpn><p>插槽3</p></cpn>
+		<hr >
+		<cpn>
+			<h2>hello</h2>
+			<p>哈哈哈哈</p>
+			<p>多个默认值</p>
+		</cpn>
+		<hr >
+		
+	</div>
+
+<template id="cpn">
+	<div id="">
+		<slot></slot>
+		<h2>我是组件</h2>
+		<p>我是组件，嘿嘿嘿</p>
+		
+		<!-- 使得组件具有很强的扩展性 -->
+		<slot><button>按钮</button></slot>
+	</div>
+</template>
+</body>
+<script>
+ 
+const app = new Vue({
+	el: "#app",
+	data:{
+	},
+	components:{
+		cpn:{
+			template:"#cpn"
+		}
+	}
+})
+</script>
+</html>

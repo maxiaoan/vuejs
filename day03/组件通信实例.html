@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<!-- 父组件模板 -->
+	<div id="app" >
+		<!-- 父组件通过 v-on 来监听子组件事件 -->
+		<cpn @increment='addclick' @decrement='subclick'></cpn>
+		<h2>组件1改变数字： {{counter}}</h2>
+	</div>
+</body>
+	<!-- 子组件模板 -->
+<template id="cpn">
+	<div>
+	<button @click="increment">+</button>
+	<button @click="decrement">-</button>
+	</div>
+</template>
+<script>
+	// 子组件
+  const cpn = {
+		template:'#cpn',
+		data(){
+			return{
+			}
+		},
+		methods:
+		{
+			increment(item){
+				this.$emit('increment',item)
+			},
+			decrement(item){
+				this.$emit('decrement',item)
+			}
+		}
+	}
+	// 父组件
+ let app = new Vue({
+ 	el: "#app",
+ 	data:{
+		counter:0
+ 	},
+	methods:{
+				addclick(){
+					this.counter++
+				},
+				subclick()
+				{
+					this.counter--
+				}			
+		},
+	components:{
+		cpn
+		}
+ })
+</script>
+</html>
+

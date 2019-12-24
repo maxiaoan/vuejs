@@ -1,0 +1,64 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id='app'>
+		<cpn></cpn>
+		<cpn ref="name"></cpn>
+		<cpn ref="name"></cpn>
+		<button @click="btnclick">显示</button>
+	</div>
+	
+</body>
+<template id="cpn">
+	<div id="show">
+		<h2>我是子组件</h2>
+	</div>
+</template>
+<script>
+ 
+let app = new Vue({
+	el: "#app",
+	data:{},
+	methods:{
+		btnclick(){
+			// 方式1、$children
+			// console.log(this.$children);
+		// this.$children[0].showmessage()
+		// for (let c of this.$children) {
+		// 	c.showMessage();
+		// 	console.log(c.name)
+		// 	console.log(c.age)
+		// }
+		// 方式2、$ref获取子组件属性。需要在组件上添加属性ref="name"
+		console.log(this.$refs);
+		console.log(this.$refs.name);
+		console.log(this.$refs.name.name);
+		this.$refs.name.showMessage()
+		
+		}
+	},
+	components:{
+		cpn:{
+			template:'#cpn',
+			data(){
+				return{
+					name:"我是子组件的name属性",
+					age:"我是子组件的age属性"
+				}
+			},
+			methods:{
+				showMessage(){
+					console.log('showMessage')
+				}
+			},
+		}
+	}
+})
+</script>
+</html>
+

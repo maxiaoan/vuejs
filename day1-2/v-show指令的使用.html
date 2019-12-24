@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id='app'>
+		<!-- 条件为false时，不创建元素至DOM中 -->
+		<!-- 一次切换时，使用v-if -->
+		<h2 v-if="isShow">{{message}}</h2>
+		<!-- 条件为false，添加一个行内样式：display属性值为none -->
+		<!-- 频繁切换时，用v-show -->
+		<h2 v-show="isShow">{{message}}</h2>
+	</div>
+	
+</body>
+<script>
+ 
+let app = new Vue({
+	el: "#app",
+	data:{
+		message:"Hello,world",
+		isShow:true
+	}
+})
+</script>
+</html>

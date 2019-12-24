@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id='app'>
+		<!-- 作用域的概念 let 和var -->
+	<button type="button">第1个按钮</button>
+	<button type="button">第2个按钮</button>
+	<button type="button">第3个按钮</button>
+	<button type="button">第4个按钮</button>
+	<button type="button">第5个按钮</button>
+	
+	</div>
+	
+</body>
+<script>
+
+const btns = document.getElementsByTagName('button');
+for(let i = 0; i < btns.length; i++){
+	btns[i].addEventListener('click',function(){
+		console.log('第' + (i+1) + '个按钮被点击')
+	})
+}
+
+// ES6对象字面量的增强写法
+// 对象的字面量
+let obj  = new Object();
+const  name = 'ma';
+const  age = 18;
+const height = 1.80;
+// ES5的对象的字面量的写法
+const obj1 = {
+	name:name,
+	age:age,
+	height:height,
+	run:function(){console.log("running")},
+	eat:function(){console.log("Eatting")}
+}
+console.log(obj1);
+obj1.eat();
+// ES6的增强写法
+const obj2 = {
+	// 属性的增强写法
+	name,
+	age,
+	height,
+	// 函数的增强写法
+	run(){
+		console.log("Running")
+	},
+	eat(){
+		console.log("Eatting")
+	}
+}
+
+console.log(obj2);
+obj2.eat();
+
+</script>
+</html>

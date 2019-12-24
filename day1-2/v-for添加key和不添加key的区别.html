@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id='app'>
+	<h2>{{message}}</h2>
+	<!-- 绑定key，这个key最好是唯一的 绑定性能会好一些,按照元素名称绑定key-->
+	<ul>
+		<!-- <li v-for="letter in letters" :key="letter">{{letter}}</li>-->
+		<li v-for="letter in letters">{{letter}}</li>
+	</ul>
+	<button @click="btnclick">push添加元素</button>
+	</div>
+	
+</body>
+<script>
+ 
+let app = new Vue({
+	el: "#app",
+	data:{
+		message:"Hello",
+		letters:['A','B','C','D','E','F']
+	},
+	methods:{
+		btnclick(){
+			//1、push方法可以做到响应式,可以跟多个元素
+			// this.letters.push("AA","BB","CC")
+			//2、通过索引值修改数组中的元素,不能做到响应式(通过splice代替来做到)
+			// this.letters[0]="AAAA"
+			//3、pop可以做到响应式
+			// this.letters.pop()
+			//4、 shift 删除数组中的第一个元素,可以做到响应式
+			// this.letters.shift()
+			//5、 unshift 数组最前面添加元素
+			// this.letters.unshift("aaa","BBb")
+			 
+			 //6、 splice 删除，插入和替换元素 三个参数,
+			 // start 从第几个元素开始
+			 // 删除元素:第二个参数传入你要删除几个元素,默认删除所有
+			// this.letters.splice(1,2)
+			 // 替换元素:第二个参数表示要插入几个元素	
+			 // this.letters.splice(2,1,'ww','ee','ff')
+			 // 插入元素:第二个位置参数为0 ,后续跟上插入元素
+			 // this.letters.splice(1,0,'x','y','z')
+			// 				sort reverse
+	 
+			//7、 this.letters.reverse()
+			//8、 this.letters.sort()
+			//9、 set(要修改的对象，索引值，修改后的数值)
+			Vue.set(this.letters,3,'bbbbb')
+			
+		}
+	}
+})
+
+function total(num1, num2){
+	return num1 + num2;
+}
+function total(num1,num2,num3){
+	return num1 + num2 + num3
+}
+function total(...num){
+	console.log(num)
+}
+</script>
+</html>
