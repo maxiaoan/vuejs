@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .wrapper{
+      height:200px;
+      background-color: bisque;
+      overflow: hidden;
+    }
+  
+  </style>
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="wrapper">
+    <ul class="content">
+	<button class="btn">Buttion </button>
+      <li>goods list1</li>
+      <li>goods list2</li>
+      <li>goods list3</li>
+      <li>goods list4</li>
+      <li>goods list5</li>
+      <li>goods list6</li>
+      <li>goods list7</li>
+      <li>goods list8</li>
+      <li>goods list9</li>
+      <li>goods list10</li>
+      <li>goods list11</li>
+      <li>goods list12</li>
+      <li>goods list13</li>
+      <li>goods list14</li>
+      <li>goods list15</li>
+      <li>goods list16</li>
+      <li>goods list17</li>
+      <li>goods list18</li>
+      <li>goods list19</li>
+      <li>goods list20</li>
+      <li>goods list21</li>
+      <li>goods list22</li>
+      <li>goods list23</li>
+      <li>goods list24</li>
+      <li>goods list25</li>
+      <li>goods list26</li>
+      <li>goods list27</li>
+      <li>goods list28</li>
+      <li>goods list29</li>
+      <li>goods list30</li>
+      <li>goods list31</li>
+      <li>goods list32</li>
+      <li>goods list33</li>
+      <li>goods list34</li>
+      <li>goods list35</li>
+      <li>goods list36</li>
+      <li>goods list37</li>
+      <li>goods list38</li>
+      <li>goods list39</li>
+      <li>goods list40</li>
+      <li>goods list41</li>
+      <li>goods list42</li>
+      <li>goods list43</li>
+      <li>goods list44</li>
+      <li>goods list45</li>
+      <li>goods list46</li>
+      <li>goods list47</li>
+      <li>goods list48</li>
+      <li>goods list49</li>
+      <li>goods list50</li>
+      <li>goods list51</li>
+      <li>goods list52</li>
+      <li>goods list53</li>
+      <li>goods list54</li>
+      <li>goods list55</li>
+      <li>goods list56</li>
+      <li>goods list57</li>
+      <li>goods list58</li>
+      <li>goods list59</li>
+      <li>goods list60</li>
+      <li>goods list61</li>
+      <li>goods list62</li>
+      <li>goods list63</li>
+      <li>goods list64</li>
+      <li>goods list65</li>
+      <li>goods list66</li>
+      <li>goods list67</li>
+      <li>goods list68</li>
+      <li>goods list69</li>
+      <li>goods list70</li>
+      <li>goods list71</li>
+      <li>goods list72</li>
+      <li>goods list73</li>
+      <li>goods list74</li>
+      <li>goods list75</li>
+      <li>goods list76</li>
+      <li>goods list77</li>
+      <li>goods list78</li>
+      <li>goods list79</li>
+      <li>goods list80</li>
+      <li>goods list81</li>
+      <li>goods list82</li>
+      <li>goods list83</li>
+      <li>goods list84</li>
+      <li>goods list85</li>
+      <li>goods list86</li>
+      <li>goods list87</li>
+      <li>goods list88</li>
+      <li>goods list89</li>
+      <li>goods list90</li>
+      <li>goods list91</li>
+      <li>goods list92</li>
+      <li>goods list93</li>
+      <li>goods list94</li>
+      <li>goods list95</li>
+      <li>goods list96</li>
+      <li>goods list97</li>
+      <li>goods list98</li>
+      <li>goods list99</li>
+      <li>goods list100</li>
+    </ul>
+  </div>
+  
+</body>
+<script src="./bscroll.js"> </script>
+<script >
+ 
+const bscroll = new BScroll(document.querySelector('.wrapper'),{
+	probeType:2,
+	click:true,
+	pullUpLoad:true
+});
+
+bscroll.on('pullingUp',()=>{ 
+	console.log("上拉加载更多")
+	//发送新的网络请求
+
+	//等待新的网络请求，并将新的数据展现出来以后，调用
+	setTimeout(()=>{
+	bscroll.finishPullUp();
+	}, 2000)
+	
+})
+bscroll.on('scroll', (position)=>{
+	//console.log(position)
+})
+
+document.querySelector('.btn').addEventListener('click',function (){
+	console.log("btn btn")
+})
+ 
+</script>
+</html>
